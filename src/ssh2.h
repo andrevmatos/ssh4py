@@ -133,8 +133,8 @@ extern void **SSH2_API;
     PyObject *SSH2_dict, *SSH2_api_object; \
     SSH2_dict = PyModule_GetDict(SSH2_module); \
     SSH2_api_object = PyDict_GetItemString(SSH2_dict, "_C_API"); \
-    if (PyCapsules_CheckExact(SSH2_api_object)) { \
-      SSH2_API = (void **)PyCapsules_GetPointer(SSH2_api_object, NULL); \
+    if (PyCapsule_CheckExact(SSH2_api_object)) { \
+      SSH2_API = (void **)PyCapsule_GetPointer(SSH2_api_object, NULL); \
     } \
   } \
 }
