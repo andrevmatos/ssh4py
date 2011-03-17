@@ -68,7 +68,7 @@ initlibssh2(void)
 	SSH2_API[SSH2_Channel_New_NUM]     = (void *)SSH2_Channel_New;
 	SSH2_API[SSH2_SFTP_New_NUM]        = (void *)SSH2_SFTP_New;
 	SSH2_API[SSH2_SFTP_handle_New_NUM] = (void *)SSH2_SFTP_handle_New;
-	c_api_object = PyCObject_FromVoidPtr((void *)SSH2_API, NULL);
+	c_api_object = PyCapsules_New((void *)SSH2_API, NULL, NULL);
 	if (c_api_object != NULL)
 		PyModule_AddObject(module, "_C_API", c_api_object);
 
